@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace Snake_2D
 {
     public partial class frmSnake : Form
@@ -32,7 +34,7 @@ namespace Snake_2D
                 goLeft = true;
             }
             if (e.KeyCode == Keys.Right && Settings.Directions != "left")
-            { 
+            {
                 goRight = true;
             }
             if (e.KeyCode == Keys.Up && Settings.Directions != "down")
@@ -43,7 +45,7 @@ namespace Snake_2D
             {
                 goDown = true;
             }
-                            
+
         }
 
         private void KeyIsUp(object sender, KeyEventArgs e)
@@ -78,12 +80,106 @@ namespace Snake_2D
 
         private void GameTimerEvent(object sender, EventArgs e)
         {
+            // Setting the directions
+            if (goLeft)
+            {
+                Settings.Directions = "left";
+            }
+            if (goRight)
+            {
+                Settings.Directions = "right";
+            }
+            if (goUp)
+            {
+                Settings.Directions = "up";
+            }
+            if (goDown)
+            {
+                Settings.Directions = "down";
+            }
 
+            for (int i = Snake.Count - 1; i < 0; i--)
+            {
+                // Checking the head of the snake
+                if (i == 0)
+                {
+                    switch (Settings.Directions)
+                    {
+                        case "left":
+                            Snake[i].x--;
+                            break;
+                        case "right":
+                            Snake[i].x++;
+                            break;
+                        case "down":
+                            Snake[i].y++;
+                            break;
+                        case "up":
+                            Snake[i].y--;
+                            break;
+                    }
+
+                    // Setting the boundry of the screen and making the snake get sent to the otherside
+                    if (Snake[i].x < 0)
+                    {
+                        Snake[i].x = maxWidth;
+                    }
+                    if (Snake[i].x > maxWidth)
+                    {
+                        Snake[i].x = 0;
+                    }
+                    if (Snake[i].y < 0)
+                    {
+                        Snake[i].y = maxHight;
+                    }
+                    if (Snake[i].y > maxHight)
+                    {
+                        Snake[i].y = 0;
+                    }
+                }
+                // Telling the body what to do
+                else
+                {
+                    Snake[i].x = Snake[i - 1].x;
+                    Snake[i].y = Snake[i - 1].y;
+                }
+            }
         }
 
         private void UpdatePictureBoxDisplay(object sender, PaintEventArgs e)
         {
+            Graphics canvas = e.Graphics;
 
+            Brush snakeColor;
+
+            // Looping the snakes body
+            for (int i = 0; i < Snake.Count; i++)
+            {
+                // Accessing the first index of the snake (The Head)
+                if (i == 0)
+                {
+                    snakeColor = Brushes.Black;
+                }
+                // Setting the value for the rest of the snake
+                else
+                {
+                    snakeColor = Brushes.Gray;
+                }
+                // Giving the snakes body color 
+                canvas.FillEllipse(snakeColor, new Rectangle
+                    (
+                        Snake[i].x * Settings.Width,
+                        Snake[i].y * Settings.Height,
+                        Settings.Width, Settings.Height
+                    ));
+            }
+            //Setting the value for the food
+            canvas.FillEllipse(Brushes.Red, new Rectangle
+                (
+                    food.x * Settings.Width,
+                    food.y * Settings.Height,
+                    Settings.Width, Settings.Height
+                ));
         }
 
         private void RestartGame(object sender, EventArgs e)
@@ -106,14 +202,14 @@ namespace Snake_2D
             Snake.Add(head); // Index 0 for the body and adding the head to a list
 
             // Adding another 10 body parts to the snake
-            for (int i = 0; i < 10;  i++)
+            for (int i = 0; i < 10; i++)
             {
                 Circle body = new Circle();
                 Snake.Add(body);
             }
 
             // Adding the food spawner
-            food = new Circle {x = random.Next(2, maxWidth), y = random.Next(2, maxHight) };
+            food = new Circle { x = random.Next(2, maxWidth), y = random.Next(2, maxHight) };
 
             // Starting the game timer
             gameTimer.Start();
