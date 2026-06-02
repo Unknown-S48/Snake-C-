@@ -141,9 +141,12 @@ namespace Snake_2D
                 else
                 {
                     Snake[i].x = Snake[i - 1].x;
-                    Snake[i].y = Snake[i - 1].y;
+                    Snake[i].y = Snake[i - 1].y; 
                 }
             }
+
+            // Adding the games tickrate
+            picCanvas.Invalidate();
         }
 
         private void UpdatePictureBoxDisplay(object sender, PaintEventArgs e)

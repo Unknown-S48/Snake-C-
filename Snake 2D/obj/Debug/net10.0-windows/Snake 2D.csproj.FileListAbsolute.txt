@@ -1,0 +1,17 @@
+C:\Users\wians\Documents\Unknown\Visual Studio\Snake C#\Snake 2D\bin\Debug\net10.0-windows\Snake 2D.exe
+C:\Users\wians\Documents\Unknown\Visual Studio\Snake C#\Snake 2D\bin\Debug\net10.0-windows\Snake 2D.deps.json
+C:\Users\wians\Documents\Unknown\Visual Studio\Snake C#\Snake 2D\bin\Debug\net10.0-windows\Snake 2D.runtimeconfig.json
+C:\Users\wians\Documents\Unknown\Visual Studio\Snake C#\Snake 2D\bin\Debug\net10.0-windows\Snake 2D.dll
+C:\Users\wians\Documents\Unknown\Visual Studio\Snake C#\Snake 2D\bin\Debug\net10.0-windows\Snake 2D.pdb
+C:\Users\wians\Documents\Unknown\Visual Studio\Snake C#\Snake 2D\obj\Debug\net10.0-windows\Snake_2D.frmSnake.resources
+C:\Users\wians\Documents\Unknown\Visual Studio\Snake C#\Snake 2D\obj\Debug\net10.0-windows\Snake 2D.csproj.GenerateResource.cache
+C:\Users\wians\Documents\Unknown\Visual Studio\Snake C#\Snake 2D\obj\Debug\net10.0-windows\Snake 2D.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\wians\Documents\Unknown\Visual Studio\Snake C#\Snake 2D\obj\Debug\net10.0-windows\Snake 2D.AssemblyInfoInputs.cache
+C:\Users\wians\Documents\Unknown\Visual Studio\Snake C#\Snake 2D\obj\Debug\net10.0-windows\Snake 2D.AssemblyInfo.cs
+C:\Users\wians\Documents\Unknown\Visual Studio\Snake C#\Snake 2D\obj\Debug\net10.0-windows\Snake 2D.csproj.CoreCompileInputs.cache
+C:\Users\wians\Documents\Unknown\Visual Studio\Snake C#\Snake 2D\obj\Debug\net10.0-windows\Snake 2D.sourcelink.json
+C:\Users\wians\Documents\Unknown\Visual Studio\Snake C#\Snake 2D\obj\Debug\net10.0-windows\Snake 2D.dll
+C:\Users\wians\Documents\Unknown\Visual Studio\Snake C#\Snake 2D\obj\Debug\net10.0-windows\refint\Snake 2D.dll
+C:\Users\wians\Documents\Unknown\Visual Studio\Snake C#\Snake 2D\obj\Debug\net10.0-windows\Snake 2D.pdb
+C:\Users\wians\Documents\Unknown\Visual Studio\Snake C#\Snake 2D\obj\Debug\net10.0-windows\Snake 2D.genruntimeconfig.cache
+C:\Users\wians\Documents\Unknown\Visual Studio\Snake C#\Snake 2D\obj\Debug\net10.0-windows\ref\Snake 2D.dll
