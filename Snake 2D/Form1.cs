@@ -1,3 +1,4 @@
+using System.CodeDom;
 using System.ComponentModel.DataAnnotations;
 
 namespace Snake_2D
@@ -70,7 +71,7 @@ namespace Snake_2D
 
         private void StartGame(object sender, EventArgs e)
         {
-
+            RestartGame();
         }
 
         private void TakeScrnShot(object sender, EventArgs e)
@@ -136,12 +137,29 @@ namespace Snake_2D
                     {
                         Snake[i].y = 0;
                     }
+
+                    // Adding the eating part
+                    // Checking if the head is on the food
+                    if (Snake[i].x == food.x && Snake[i].y == food.y)
+                    {
+                        EatFood();
+                    }
+
+                    // Checknig if the snake eats a part of it's self
+                    for (int j = 1; j < Snake.Count; j++)
+                    {
+                        if (Snake[i].x == Snake[j].x && Snake[i].y == Snake[j].y)
+                        {
+                            GameOver();
+                        }
+                    }
+
                 }
                 // Telling the body what to do
                 else
                 {
                     Snake[i].x = Snake[i - 1].x;
-                    Snake[i].y = Snake[i - 1].y; 
+                    Snake[i].y = Snake[i - 1].y;
                 }
             }
 
@@ -185,7 +203,7 @@ namespace Snake_2D
                 ));
         }
 
-        private void RestartGame(object sender, EventArgs e)
+        private void RestartGame()
         {
             // Adding all the default values we want before the game starts
             maxWidth = picCanvas.Width / Settings.Width - 1;
@@ -218,14 +236,39 @@ namespace Snake_2D
             gameTimer.Start();
         }
 
-        private void EatFood(object sender, EventArgs e)
+        private void EatFood()
         {
+            // Updating the score
+            score += 1;
+            lblScore.Text = "Score: " + score;
+            // Creating a new body part
+            Circle body = new Circle
+            {
+                x = Snake[Snake.Count - 1].x,
+                y = Snake[Snake.Count - 1].y
+            };
+            // Adding the new body part to the snake
+            Snake.Add(body);
 
+            // Generating the new piece of food
+            food = new Circle { x = random.Next(2, maxWidth), y = random.Next(2, maxHight) };
         }
 
-        private void GameOver(object sender, EventArgs e)
+        private void GameOver()
         {
+            // Stoping the game loop
+            gameTimer.Stop();
+            btnStart.Enabled = true;
+            btnScrnSave.Enabled = true;
 
+            // Checking if there is a new highscore 
+            if (score > highScore)
+            {
+                highScore = score;
+                lblHighScore.Text = "High Score: " + Environment.NewLine + highScore;
+                lblHighScore.ForeColor = Color.Maroon;
+                lblHighScore.TextAlign = ContentAlignment.MiddleCenter; 
+            }
         }
     }
 }
