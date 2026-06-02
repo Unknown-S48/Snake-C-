@@ -109,6 +109,7 @@
             Controls.Add(btnStart);
             Name = "frmSnake";
             Text = " Snake 2D - TNL";
+            KeyPreview = true;
             KeyDown += KeyIsDown;
             KeyUp += KeyIsUp;
             ((System.ComponentModel.ISupportInitialize)picCanvas).EndInit();

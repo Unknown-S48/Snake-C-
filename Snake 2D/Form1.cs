@@ -31,19 +31,19 @@ namespace Snake_2D
         private void KeyIsDown(object sender, KeyEventArgs e)
         {
             // Checking for input and if the left key is down and the direction is the oppisite of the key it goes that direction
-            if (e.KeyCode == Keys.H && Settings.Directions != "right")
+            if (e.KeyCode == Keys.Left && Settings.Directions != "right")
             {
                 goLeft = true;
             }
-            if (e.KeyCode == Keys.N && Settings.Directions != "left")
+            if (e.KeyCode == Keys.Right && Settings.Directions != "left")
             {
                 goRight = true;
             }
-            if (e.KeyCode == Keys.C && Settings.Directions != "down")
+            if (e.KeyCode == Keys.Up && Settings.Directions != "down")
             {
                 goUp = true;
             }
-            if (e.KeyCode == Keys.T && Settings.Directions != "up")
+            if (e.KeyCode == Keys.Down && Settings.Directions != "up")
             {
                 goDown = true;
             }
@@ -52,19 +52,19 @@ namespace Snake_2D
 
         private void KeyIsUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.H)
+            if (e.KeyCode == Keys.Left)
             {
                 goLeft = false;
             }
-            if (e.KeyCode == Keys.N)
+            if (e.KeyCode == Keys.Right)
             {
                 goRight = false;
             }
-            if (e.KeyCode == Keys.C)
+            if (e.KeyCode == Keys.Up)
             {
                 goUp = false;
             }
-            if (e.KeyCode == Keys.T)
+            if (e.KeyCode == Keys.Down)
             {
                 goDown = false;
             }
@@ -122,7 +122,7 @@ namespace Snake_2D
                 Settings.Directions = "down";
             }
 
-            for (int i = Snake.Count - 1; i < 0; i--)
+            for (int i = Snake.Count - 1; i >= 0; i--)
             {
                 // Checking the head of the snake
                 if (i == 0)
@@ -246,7 +246,7 @@ namespace Snake_2D
             Snake.Add(head); // Index 0 for the body and adding the head to a list
 
             // Adding another 10 body parts to the snake
-            for (int i = 0; i < 100; i++)
+            for (int i = 0; i < 10; i++)
             {
                 Circle body = new Circle();
                 Snake.Add(body);
