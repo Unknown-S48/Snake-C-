@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Snake 2D")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+82a2cbd7cf162a929fbf8a6a3742159c2bd71c7e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2b844ec201e62fe52d1f206e529de93a75c377cb")]
 [assembly: System.Reflection.AssemblyProductAttribute("Snake 2D")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Snake 2D")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

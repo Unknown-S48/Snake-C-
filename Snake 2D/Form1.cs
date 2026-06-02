@@ -1,5 +1,6 @@
-using System.CodeDom;
-using System.ComponentModel.DataAnnotations;
+using System.Drawing.Imaging;
+
+
 
 namespace Snake_2D
 {
@@ -30,19 +31,19 @@ namespace Snake_2D
         private void KeyIsDown(object sender, KeyEventArgs e)
         {
             // Checking for input and if the left key is down and the direction is the oppisite of the key it goes that direction
-            if (e.KeyCode == Keys.Left && Settings.Directions != "right")
+            if (e.KeyCode == Keys.H && Settings.Directions != "right")
             {
                 goLeft = true;
             }
-            if (e.KeyCode == Keys.Right && Settings.Directions != "left")
+            if (e.KeyCode == Keys.N && Settings.Directions != "left")
             {
                 goRight = true;
             }
-            if (e.KeyCode == Keys.Up && Settings.Directions != "down")
+            if (e.KeyCode == Keys.C && Settings.Directions != "down")
             {
                 goUp = true;
             }
-            if (e.KeyCode == Keys.Down && Settings.Directions != "up")
+            if (e.KeyCode == Keys.T && Settings.Directions != "up")
             {
                 goDown = true;
             }
@@ -51,19 +52,19 @@ namespace Snake_2D
 
         private void KeyIsUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Left)
+            if (e.KeyCode == Keys.H)
             {
                 goLeft = false;
             }
-            if (e.KeyCode == Keys.Right)
+            if (e.KeyCode == Keys.N)
             {
                 goRight = false;
             }
-            if (e.KeyCode == Keys.Up)
+            if (e.KeyCode == Keys.C)
             {
                 goUp = false;
             }
-            if (e.KeyCode == Keys.Down)
+            if (e.KeyCode == Keys.T)
             {
                 goDown = false;
             }
@@ -76,7 +77,29 @@ namespace Snake_2D
 
         private void TakeScrnShot(object sender, EventArgs e)
         {
-
+            Label caption = new Label();
+            caption.Text = "I scored: " + score + " and my Highscore is " + highScore + " on the Snake Game from MOO ICT";
+            caption.Font = new Font("Ariel", 12, FontStyle.Bold);
+            caption.ForeColor = Color.Purple;
+            caption.AutoSize = false;
+            caption.Width = picCanvas.Width;
+            caption.Height = 30;
+            caption.TextAlign = ContentAlignment.MiddleCenter;
+            picCanvas.Controls.Add(caption);
+            SaveFileDialog dialog = new SaveFileDialog();
+            dialog.FileName = "Snake Game SnapShot MOO ICT";
+            dialog.DefaultExt = "jpg";
+            dialog.Filter = "JPG Image File | *.jpg";
+            dialog.ValidateNames = true;
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                int width = Convert.ToInt32(picCanvas.Width);
+                int height = Convert.ToInt32(picCanvas.Height);
+                Bitmap bmp = new Bitmap(width, height);
+                picCanvas.DrawToBitmap(bmp, new Rectangle(0, 0, width, height));
+                bmp.Save(dialog.FileName, ImageFormat.Jpeg);
+                picCanvas.Controls.Remove(caption);
+            }
         }
 
         private void GameTimerEvent(object sender, EventArgs e)
@@ -223,7 +246,7 @@ namespace Snake_2D
             Snake.Add(head); // Index 0 for the body and adding the head to a list
 
             // Adding another 10 body parts to the snake
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 100; i++)
             {
                 Circle body = new Circle();
                 Snake.Add(body);
@@ -267,7 +290,7 @@ namespace Snake_2D
                 highScore = score;
                 lblHighScore.Text = "High Score: " + Environment.NewLine + highScore;
                 lblHighScore.ForeColor = Color.Maroon;
-                lblHighScore.TextAlign = ContentAlignment.MiddleCenter; 
+                lblHighScore.TextAlign = ContentAlignment.MiddleCenter;
             }
         }
     }
